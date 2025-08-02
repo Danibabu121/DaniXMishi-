@@ -14,9 +14,8 @@ module.exports.config = {
   }
 };
 
-module.exports.run = async function ({ api, event, args }) {
+module.exports.run = async function ({ api, event }) {
   const axios = require("axios");
-  const request = require("request");
   const fs = require("fs-extra");
   const moment = require("moment-timezone");
 
@@ -24,53 +23,70 @@ module.exports.run = async function ({ api, event, args }) {
   const hours = Math.floor(time / 3600);
   const minutes = Math.floor((time % 3600) / 60);
   const seconds = Math.floor(time % 60);
-
   const juswa = moment.tz("Asia/Kolkata").format("『D/MM/YYYY』 【HH:mm:ss】");
 
   const images = [
-    "https://i.postimg.cc/4yVw6tm7/Picsart-23-03-26-11-08-19-025.jpg",
-    "https://i.imgur.com/rg0fjQE.jpg",
-    "https://i.imgur.com/QcNXYfT.jpg",
-    "https://i.imgur.com/WhVSHLB.png"
+    "https://i.ibb.co/Tq29JTm0/received-1043383061158606.jpg",
+    "https://i.ibb.co/tTy4wZWd/received-1283063783277874.jpg",
+    "https://i.ibb.co/99pSZhbT/received-1295330775646213.jpg",
+    "https://i.ibb.co/QjrHzDNX/received-1376290610103351.jpg"
   ];
-
   const selectedImage = images[Math.floor(Math.random() * images.length)];
-  const imgPath = __dirname + "/cache/juswa.jpg";
+  const imgPath = __dirname + "/cache/infobot.jpg";
 
   try {
-    const callback = () => {
-      api.sendMessage({
-        body: `🌹𝙰𝙳𝙼𝙸𝙽 𝙰𝙽𝙳 𝙱𝙾𝚃 𝙸𝙽𝙵𝙾𝚁𝙼𝙰𝚃𝙸𝙾𝙽 🇮🇳
+    // Ensure /cache folder exists
+    if (!fs.existsSync(__dirname + "/cache")) {
+      fs.mkdirSync(__dirname + "/cache");
+    }
 
-☄️𝗕𝗢𝗧 𝗡𝗔𝗠𝗘☄️ ⚔ ${global.config.BOTNAME} ⚔
+    // Download image
+    const res = await axios.get(selectedImage, { responseType: "arraybuffer" });
+    fs.writeFileSync(imgPath, Buffer.from(res.data, "utf-8"));
 
-🔥𝗢𝗪𝗡𝗘𝗥 🔥☞︎︎︎ 𝙰𝚛𝚞𝚗 𝙺𝚞𝚖𝚊𝚛 ☜︎︎︎✰
+    // Send message with image
+    api.sendMessage({
+      body: `
+╭───────────◆◇◆────────────╮
+   🎀 『 𝗜𝗡𝗙𝗢 - 𝗗𝗔𝗡𝗜𝗦𝗛 ✘ 𝗠𝗜𝗦𝗛𝗜 』🎀
+╰────────────◆◇◆───────────╯
 
-🙈🄾🅆🄽🄴🅁 🄲🄾🄽🅃🄰🄲🅃 🄻🄸🄽🄺🅂🙈➪
+📌 𝗕𝗢𝗧 𝗡𝗔𝗠𝗘:         𝙳𝚊𝚗𝚒𝚜𝚑 𝚇 𝙼𝚒𝚜𝚑𝚒 💖
+📌 𝗢𝗪𝗡𝗘𝗥:              🦋 𝙼𝚒𝚜𝚑𝚒🦋
+📌 𝗙𝗕 𝗟𝗜𝗡𝗞:     https://www.facebook.com/profile.php?id=100092458674673    
 
-𝗙𝗔𝗖𝗘𝗕𝗢𝗢𝗞 🧨 https://www.facebook.com/arun.x76 💞🕊️
-𝗜𝗡𝗦𝗧𝗔𝗚𝗥𝗔𝗠 👉 @arunkumar_031
+───────────────────────────────
 
-====𝗛𝗼𝘄 𝘁𝗼 𝗖𝗿𝗲𝗮𝘁𝗲 𝗔 𝗯𝗼𝘁 ====
-𝗩𝗶𝘀𝗶𝘁 𝗮𝗻𝗱 𝗦𝘂𝗯𝘀𝗰𝗿𝗶𝗯𝗲 ➤ https://www.youtube.com/@mirrykal
+🌟 𝗙𝗘𝗔𝗧𝗨𝗥𝗘𝗦 🌟
 
-✧══════•❁❀❁•══════✧
+💬 Stylish AI Replies & Talkbot  
+🎶 YouTube Music & Audio Tools  
+🎭 Pair, Roast, Moto, LoveChat  
+🖼  Logo Maker & DP Generator  
+🎉 Romantic, Funny, Stylish UI  
+⚙️ Admin Tools | Auto Ban System
 
-🌸𝗕𝗼𝘁 𝗣𝗿𝗲𝗳𝗶𝘅🌸 ➤ ${global.config.PREFIX}
+───────────────────────────────
 
-🥳 𝗧𝗼𝗱𝗮𝘆'𝘀 𝗗𝗮𝘁𝗲 & 𝗧𝗶𝗺𝗲 🥳 ➤ ${juswa}
+✨𝐁𝐎𝐓 𝐔𝐒𝐄  𝐊𝐀𝐑𝐍𝐘 𝐊𝐀 𝐓𝐀𝐑𝐈𝐊𝐀✨  
+👉 Type: Oye bot  
+🔗 Owner  
+https://www.facebook.com/profile.php?id=100092458674673  
 
-⚡ 𝗕𝗼𝘁 𝗨𝗽𝘁𝗶𝗺𝗲 ⚡ ➤ ${hours}:${minutes}:${seconds}
+───────────────────────────────
 
-✅ 𝗧𝗵𝗮𝗻𝗸𝘀 𝗳𝗼𝗿 𝘂𝘀𝗶𝗻𝗴 ${global.config.BOTNAME} ❤🖤`,
-        attachment: fs.createReadStream(imgPath)
-      }, event.threadID, () => fs.unlinkSync(imgPath));
-    };
+📆 𝗧𝗢𝗗𝗔𝗬'𝗦 𝗗𝗔𝗧𝗘 & 𝗧𝗜𝗠𝗘 ➤ ${juswa}  
+⏱️ 𝗕𝗢𝗧 𝗨𝗣𝗧𝗜𝗠𝗘 ➤ ${hours}h ${minutes}m ${seconds}s  
 
-    request(encodeURI(selectedImage)).pipe(fs.createWriteStream(imgPath)).on("close", callback);
+╭─────────────★彡────────────╮  
+        💖 𝑫𝒂𝒏𝒊𝒔𝒉 ✘ 𝑴𝒊𝒔𝒉𝒊 𝑩𝒐𝒕 𝒊𝒔 𝑷𝒐𝒘𝒆𝒓 💖  
+╰─────────────★彡────────────╯  
+      `,
+      attachment: fs.createReadStream(imgPath)
+    }, event.threadID, () => fs.unlinkSync(imgPath));
 
   } catch (err) {
     console.log("❌ Error in inf command:", err);
-    return api.sendMessage("⚠️ An error occurred while fetching bot info.", event.threadID);
+    return api.sendMessage("⚠️ Error occurred while fetching bot info.", event.threadID);
   }
 };
