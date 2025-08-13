@@ -3,19 +3,22 @@ module.exports.config = {
 	name: "chocolate",
     version: "1.0.1",
 	hasPermssion: 0,
-	credits: "𝐏𝐫𝐢𝐲𝐚𝐧𝐬𝐡 𝐑𝐚𝐣𝐩𝐮𝐭", 
-	description: "hihihihi",
-	commandCategory: "no prefix",
-	usages: "chocolate",
-    cooldowns: 5, 
+	credits: "Candy", 
+	description: "no prefix",
+	commandCategory: "No command marks needed",
+	usages: "...",
+    cooldowns: 1, 
 };
 
 module.exports.handleEvent = function({ api, event, client, __GLOBAL }) {
 	var { threadID, messageID } = event;
-	if (event.body.indexOf("Chocolate")==0 || event.body.indexOf("chocolate")==0 || event.body.indexOf("toffee")==0 || event.body.indexOf("Toffee")==0) {
+	let react = event.body.toLowerCase();
+	if(react.includes("CHOCOLATE") ||
+     react.includes("Chocolate") || 
+react.includes("chocolate")) {
 		var msg = {
-				body: "Ye lo chocolate 🍫",
-				attachment: fs.createReadStream(__dirname + `/cache/chocolate.jpg`)
+				body: "Lo baby inme se jo chocolate psnd ho khalo😘🍫🍩",
+				attachment: fs.createReadStream(__dirname + `/noprefix/cho.jpeg`)
 			}
 			api.sendMessage(msg, threadID, messageID);
     api.setMessageReaction("🍫", event.messageID, (err) => {}, true)
@@ -23,4 +26,4 @@ module.exports.handleEvent = function({ api, event, client, __GLOBAL }) {
 	}
 	module.exports.run = function({ api, event, client, __GLOBAL }) {
 
-  }
+	}
