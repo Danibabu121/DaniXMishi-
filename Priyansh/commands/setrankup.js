@@ -1,90 +1,143 @@
 module.exports.config = {
-    name: "setrankup",
-    version: "1.0.5",
-    hasPermssion: 1,
-    credits: "𝐏𝐫𝐢𝐲𝐚𝐧𝐬𝐡 𝐑𝐚𝐣𝐩𝐮𝐭",
-    description: "Edit text/animation when new members level up",
-    commandCategory: "System",
-    usages: "[gif/text] [Text or URL Download GIF image]",
-    cooldowns: 10,
-    dependencies: {
-        "fs-extra": "",
-        "path": ""
-    }
+name: "rankup",
+version: "7.6.8",
+hasPermssion: 1,
+credits: "Mishi",
+description: "Announce rankup for each group/user @hiramin ko muna to kreysh thanks ",
+commandCategory: "Edit-IMG",
+dependencies: {
+"fs-extra": ""
+},
+cooldowns: 2,
+};
+
+module.exports.handleEvent = async function({ api, event, Currencies, Users, getText }) {
+var {threadID, senderID } = event;
+const { createReadStream, existsSync, mkdirSync } = global.nodemodule["fs-extra"];
+  const { loadImage, createCanvas } = require("canvas");
+  const fs = global.nodemodule["fs-extra"];
+  const axios = global.nodemodule["axios"];
+  let pathImg = __dirname + "/noprefix/rankup/rankup.png";
+  let pathAvt1 = __dirname + "/cache/Avtmot.png";
+  var id1 = event.senderID;
+  
+
+threadID = String(threadID);
+senderID = String(senderID);
+
+const thread = global.data.threadData.get(threadID) || {};
+
+let exp = (await Currencies.getData(senderID)).exp;
+exp = exp += 1;
+
+if (isNaN(exp)) return;
+
+if (typeof thread["rankup"] != "undefined" && thread["rankup"] == false) {
+await Currencies.setData(senderID, { exp });
+return;
+};
+
+const curLevel = Math.floor((Math.sqrt(1 + (4 * exp / 3) + 1) / 2));
+const level = Math.floor((Math.sqrt(1 + (4 * (exp + 1) / 3) + 1) / 2));
+
+if (level > curLevel && level != 1) {
+const name = global.data.userName.get(senderID) || await Users.getNameUser(senderID);
+var messsage = (typeof thread.customRankup == "undefined") ? msg = getText("levelup") : msg = thread.customRankup, 
+arrayContent;
+
+messsage = messsage
+.replace(/\{name}/g, name)
+.replace(/\{level}/g, level);
+
+const moduleName = this.config.name;
+
+    var background = [
+  "https://i.ibb.co/DffbB7x/2-7-BDCACE.png",
+  "https://i.ibb.co/606p1ZF/1-C0-CF112.png",
+  "https://i.ibb.co/54b5KY6/3-10100-BC.png",
+  "https://i.ibb.co/4RHd3mM/4-AB4-CF2-B.png",
+  "https://i.ibb.co/7WHKF0H/9-498-C5-E0.png",
+  "https://i.ibb.co/nPfY3HN/8-ADA7767.png",
+  "https://i.ibb.co/Ldctgw4/5-49-F92-DC.png",
+  "https://i.ibb.co/J29hdFW/6-EB49-EF4.png",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  ""
+  ];
+    var rd = background[Math.floor(Math.random() * background.length)];
+    let getAvtmot = (
+    await axios.get(
+      `https://graph.facebook.com/${id1}/picture?width=720&height=720&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`,
+      { responseType: "arraybuffer" }
+    )
+  ).data;
+  fs.writeFileSync(pathAvt1, Buffer.from(getAvtmot, "utf-8"));
+  
+  let getbackground = (
+    await axios.get(`${rd}`, {
+      responseType: "arraybuffer",
+    })
+  ).data;
+  fs.writeFileSync(pathImg, Buffer.from(getbackground, "utf-8"));
+  
+    let baseImage = await loadImage(pathImg);
+    let baseAvt1 = await loadImage(pathAvt1);
+    let canvas = createCanvas(baseImage.width, baseImage.height);
+    let ctx = canvas.getContext("2d");
+    ctx.drawImage(baseImage, 0, 0, canvas.width, canvas.height);
+    ctx.rotate(-25 * Math.PI / 180);
+    ctx.drawImage(baseAvt1, 90, 330, 340, 340);
+    const imageBuffer = canvas.toBuffer();
+    fs.writeFileSync(pathImg, imageBuffer);
+    fs.removeSync(pathAvt1);
+api.sendMessage({body: messsage, mentions: [{ tag: name, id: senderID }], attachment: fs.createReadStream(pathImg) }, event.threadID, () => fs.unlinkSync(pathImg));
+    
 }
 
-module.exports.onLoad = function () {
-    const { existsSync, mkdirSync } = global.nodemodule["fs-extra"];
-    const { join } = global.nodemodule["path"];
-
-    const path = join(__dirname, "cache", "rankup");
-    if (!existsSync(path)) mkdirSync(path, { recursive: true });
-
-    return;
+await Currencies.setData(senderID, { exp });
+return;
 }
 
 module.exports.languages = {
-    "vi": {
-        "savedConfig": "Đã lưu tùy chỉnh của bạn thành công! dưới đây sẽ là phần preview:",
-        "tagMember": "[Tên thành viên]",
-        "tagLevel": "[Level của thành viên]",
-        "gifPathNotExist": "Nhóm của bạn chưa từng cài đặt gif rankup",
-        "removeGifSuccess": "Đã gỡ bỏ thành công file gif của nhóm bạn!",
-        "invaildURL": "Url bạn nhập không phù hợp!",
-        "internetError": "Không thể tải file vì url không tồn tại hoặc bot đã xảy ra vấn đề về mạng!",
-        "saveGifSuccess": "Đã lưu file gif của nhóm bạn thành công, bên dưới đây là preview:"
-    },
-    "en": {
-        "savedConfig": "Saved your config, here is preview:",
-        "tagMember": "[Member's name]",
-        "tagLevel": "[Member level]",
-        "gifPathNotExist":"Your thread didn't set gif join",
-        "removeGifSuccess": "Removed thread's gif!",
-        "invaildURL": "Invalid url!",
-        "internetError": "Can't load file because url doesn't exist or internet have some problem!",
-        "saveGifSuccess": "Saved file gif, here is preview:"
-    }
+"vi": {
+"off": "𝗧𝗮̆́𝘁",
+"on": "𝗕𝗮̣̂𝘁",
+"successText": "𝐭𝐡𝐚̀𝐧𝐡 𝐜𝐨̂𝐧𝐠 𝐭𝐡𝐨̂𝐧𝐠 𝐛𝐚́𝐨 𝐫𝐚𝐧𝐤𝐮𝐩 ✨",
+"levelup": "🌸 𝗞𝗶̃ 𝗻𝗮̆𝗻𝗴 𝘅𝗮̣𝗼 𝗹𝗼̂̀𝗻𝗻 𝗼̛̉ 𝗺𝗼̂𝗻 𝗽𝗵𝗮́𝗽 𝗵𝗮̂́𝗽 𝗱𝗶𝗲̂𝗺 𝗰𝘂̉𝗮 {name} 𝘃𝘂̛̀𝗮 𝗹𝗲̂𝗻 𝘁𝗼̛́𝗶 𝗹𝗲𝘃𝗲𝗹 {level} 🌸"
+},
+"en": {
+"on": "on",
+"off": "off",
+"successText": "success notification rankup!",
+"levelup": "{name}, Your Keyboard Has Reached Level Up {level}",
+}
 }
 
-module.exports.run = async function ({ args, event, api, Threads, getText }) {
-    try {
-        const { existsSync, createReadStream } = global.nodemodule["fs-extra"];
-        const { join } = global.nodemodule["path"];
-        const { threadID, messageID } = event;
-        const msg = args.slice(1, args.length).join(" ");
-        var data = (await Threads.getData(threadID)).data;
+module.exports.run = async function({ api, event, Threads, getText }) {
+const { threadID, messageID } = event;
+let data = (await Threads.getData(threadID)).data;
+  
+if (typeof data["rankup"] == "undefined" || data["rankup"] == false) data["rankup"] = true;
+else data["rankup"] = false;
 
-        switch (args[0]) {
-            case "text": {
-                data["customRankup"] = msg;
-                global.data.threadData.set(parseInt(threadID), data);
-                await Threads.setData(threadID, { data });
-                return api.sendMessage(getText("savedConfig"), threadID, function () {
-                    const body = msg
-                    .replace(/\{name}/g, getText("tagMember"))
-                    .replace(/\{level}/g, getText("tagLevel"));
-                    return api.sendMessage(body, threadID);
-                });
-            }
-            case "gif": {
-                const path = join(__dirname, "cache", "rankup");
-                const pathGif = join(path, `${threadID}.gif`);
-                if (msg == "remove") {
-                    if (!existsSync(pathGif)) return api.sendMessage(getText("gifPathNotExist"), threadID, messageID);
-                    unlinkSync(pathGif);
-                    return api.sendMessage(getText("removeGifSuccess"), threadID, messageID);
-                }
-                else {
-                    if (!msg.match(/(http(s?):)([/|.|\w|\s|-])*\.(?:gif|GIF)/g)) return api.sendMessage(getText("invaildURL"), threadID, messageID);
-                    try {
-                        await global.utils.downloadFile(msg, pathGif);
-                    } catch (e) { return api.sendMessage(getText("internetError"), threadID, messageID) }
-                    return api.sendMessage({ body: getText("saveGifSuccess"), attachment: createReadStream(pathGif) }, threadID, messageID);
-                }
-            }
-            default: {
-                return global.utils.throwError(this.config.name, threadID, messageID);
-            }
-        }
-    } catch (e) { return console.log(e) };
-}
+await Threads.setData(threadID, { data });
+global.data.threadData.set(threadID, data);
+return api.sendMessage(`${(data["rankup"] == true) ? getText("on") : getText("off")} ${getText("successText")}`, threadID, messageID);
+                                                }
+
+  
+
+      
