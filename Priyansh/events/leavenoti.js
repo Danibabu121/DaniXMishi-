@@ -2,7 +2,7 @@ module.exports.config = {
 	name: "leave",
 	eventType: ["log:unsubscribe"],
 	version: "1.0.0",
-	credits: "𝘼𝙔𝙐𝙎𝙃 𝙎𝙃𝙐𝙆𝙇𝘼",//Mod by H.Thanh
+	credits: "Mishi",//Mod by H.Thanh
 	description: "Notify the Bot or the person leaving the group with a random gif/photo/video",
 	dependencies: {
 		"fs-extra": "",
@@ -55,3 +55,4 @@ module.exports.run = async function({ api, event, Users, Threads }) {
 	else formPush = { body: msg }
 	
 	return api.sendMessage(formPush, threadID);
+	
