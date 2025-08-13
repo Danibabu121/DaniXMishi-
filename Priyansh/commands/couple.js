@@ -1,80 +1,62 @@
-﻿module.exports.config = {
-    name: "couple",
-    version: "2.0.0",
-    hasPermssion: 0,
-    credits: "𝐏𝐫𝐢𝐲𝐚𝐧𝐬𝐡 𝐑𝐚𝐣𝐩𝐮𝐭",
-    description: "Seo phi",
-    commandCategory: "Love",
-    usages: "[tag]",
-    cooldowns: 5,
-    dependencies: {
-        "axios": "",
-        "fs-extra": "",
-        "path": "",
-        "jimp": ""
-    }
+module.exports.config = {
+  name: "couple",
+  version: "1.0.0",
+  hasPermssion: 0,
+  credits: "lioness",
+  description: "Chaeyoung Pictures.",
+  commandCategory: "Image",
+  cooldowns: 1,
+  dependencies: {
+    "request":"",
+    "fs-extra":"",
+    "axios":""
+  }
 };
 
-module.exports.onLoad = async() => {
-    const { resolve } = global.nodemodule["path"];
-    const { existsSync, mkdirSync } = global.nodemodule["fs-extra"];
-    const { downloadFile } = global.utils;
-    const dirMaterial = __dirname + `/cache/canvas/`;
-    const path = resolve(__dirname, 'cache/canvas', 'seophi.png');
-    if (!existsSync(dirMaterial + "canvas")) mkdirSync(dirMaterial, { recursive: true });
-    if (!existsSync(path)) await downloadFile("https://i.imgur.com/hmKmmam.jpg", path);
-}
+module.exports.run = async({api,event,args,client,Users,Threads,__GLOBAL,Currencies}) => {
+const axios = global.nodemodule["axios"];
+const request = global.nodemodule["request"];
+const fs = global.nodemodule["fs-extra"];
+  var link = [
+"https://i.imgur.com/vAFYHhn.jpeg",
+"https://i.imgur.com/eMXfW8D.jpeg",
+"https://i.imgur.com/jbvjPj7.jpeg",
+"https://i.imgur.com/tWXYJcT.jpeg",
+"https://i.imgur.com/8yhdq7B.jpeg",
+"https://i.imgur.com/mmYv477.jpeg",
+"https://i.imgur.com/5f1Pnvd.jpeg",
+"https://i.imgur.com/vnUC6j1.jpeg",
+"https://i.imgur.com/MkEY9Zp.jpeg",
+"https://i.imgur.com/FIiy6Dx.jpeg",
+"https://i.imgur.com/PmlqxOu.jpeg",
+"https://i.imgur.com/h2CqoXP.jpeg",
+"https://i.imgur.com/2slny4H.jpeg",
+"https://i.imgur.com/nMYa1AD.jpeg",
+"https://i.imgur.com/RNMajEx.jpeg",
+"https://i.imgur.com/Q5iGbxE.jpeg",
+"https://i.imgur.com/jxuMZbR.jpeg",
+"https://i.imgur.com/hAswV0l.jpeg",
+"https://i.imgur.com/YYuXk6W.jpeg",
+"https://i.imgur.com/I5wmuoj.jpeg",
+"https://i.imgur.com/WB8LQPR.jpeg",
+"https://i.imgur.com/BKgdfZh.jpeg",
+"https://i.imgur.com/b3ePj3w.jpeg",
+"https://i.imgur.com/WnTLCVb.jpeg",
+"https://i.imgur.com/qPuQkeu.jpeg",
+"https://i.imgur.com/B2uQCng.jpeg",
+"https://i.imgur.com/soGu6gr.jpeg",
+"https://i.imgur.com/r7VOLvP.jpeg",
+"https://i.imgur.com/PKM0xAF.jpeg",
+"https://i.imgur.com/ZFiNIqc.jpeg",
+  ];
+	 var callback = () => api.sendMessage({body:`🌹تمہیـﹻ۬ﹻۧ۬ﹻٰ۬ﹻٰ۬ﹻۧ۬ﹻ۬ﹻـں چـﹻ۬ﹻۧ۬ﹻٰ۬ﹻٰ۬ﹻۧ۬ﹻ۬ﹻـاہـﹻ۬ﹻۧ۬ﹻٰ۬ﹻٰ۬ﹻۧ۬ﹻ۬ﹻـا ہیـﹻ۬ﹻۧ۬ﹻٰ۬ﹻٰ۬ﹻۧ۬ﹻ۬ﹻـں تمہیـﹻ۬ﹻۧ۬ﹻٰ۬ﹻٰ۬ﹻۧ۬ﹻ۬ﹻـں💮✍️📚🌹
 
-async function makeImage({ one, two }) {
-    const fs = global.nodemodule["fs-extra"];
-    const path = global.nodemodule["path"];
-    const axios = global.nodemodule["axios"]; 
-    const jimp = global.nodemodule["jimp"];
-    const __root = path.resolve(__dirname, "cache", "canvas");
+🌹ہــﹻ۬ﹻۧ۬ﹻٰ۬ﹻٰ۬ﹻۧ۬ﹻ۬ﹻـی چــﹻ۬ﹻۧ۬ﹻٰ۬ﹻٰ۬ﹻۧ۬ﹻ۬ﹻـاہیــﹻ۬ﹻۧ۬ﹻٰ۬ﹻٰ۬ﹻۧ۬ﹻ۬ﹻـں گـﹻ۬ﹻۧ۬ﹻٰ۬ﹻٰ۬ﹻۧ۬ﹻ۬ﹻـے💮✍️📚🌹
 
-    let batgiam_img = await jimp.read(__root + "/seophi.png");
-    let pathImg = __root + `/batman${one}_${two}.png`;
-    let avatarOne = __root + `/avt_${one}.png`;
-    let avatarTwo = __root + `/avt_${two}.png`;
-    
-    let getAvatarOne = (await axios.get(`https://graph.facebook.com/${one}/picture?width=512&height=512&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`, { responseType: 'arraybuffer' })).data;
-    fs.writeFileSync(avatarOne, Buffer.from(getAvatarOne, 'utf-8'));
-    
-    let getAvatarTwo = (await axios.get(`https://graph.facebook.com/${two}/picture?width=512&height=512&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`, { responseType: 'arraybuffer' })).data;
-    fs.writeFileSync(avatarTwo, Buffer.from(getAvatarTwo, 'utf-8'));
-    
-    let circleOne = await jimp.read(await circle(avatarOne));
-    let circleTwo = await jimp.read(await circle(avatarTwo));
-    batgiam_img.resize(1024, 712).composite(circleOne.resize(200, 200), 527, 141).composite(circleTwo.resize(200, 200), 389, 407);
-    
-    let raw = await batgiam_img.getBufferAsync("image/png");
-    
-    fs.writeFileSync(pathImg, raw);
-    fs.unlinkSync(avatarOne);
-    fs.unlinkSync(avatarTwo);
-    
-    return pathImg;
-}
-async function circle(image) {
-    const jimp = require("jimp");
-    image = await jimp.read(image);
-    image.circle();
-    return await image.getBufferAsync("image/png");
-}
+🌹تـﹻ۬ﹻۧ۬ﹻٰ۬ﹻٰ۬ﹻۧ۬ﹻ۬ﹻـم ســـﹻ۬ﹻۧ۬ﹻٰ۬ﹻٰ۬ﹻۧ۬ﹻ۬ﹻـے خــﹻ۬ﹻۧ۬ﹻٰ۬ﹻٰ۬ﹻۧ۬ﹻ۬ﹻـاصَ میــﹻ۬ﹻۧ۬ﹻٰ۬ﹻٰ۬ﹻۧ۬ﹻ۬ﹻـری 💮✍️📚🌹
 
-module.exports.run = async function ({ event, api, args }) {
-    const fs = global.nodemodule["fs-extra"];
-    const { threadID, messageID, senderID } = event;
-    var mention = Object.keys(event.mentions)[0]
-    let tag = event.mentions[mention].replace("@", "");
-    if (!mention) return api.sendMessage("Vui lòng tag 1 người", threadID, messageID);
-    else {
-        var one = senderID, two = mention;
-        return makeImage({ one, two }).then(path => api.sendMessage({ body: "Ship ",
-            mentions: [{
-          tag: tag,
-          id: mention
-        }],
-     attachment: fs.createReadStream(path) }, threadID, () => fs.unlinkSync(path), messageID));
-    }
-}
+🌹 زندگـــﹻ۬ﹻۧ۬ﹻٰ۬ﹻٰ۬ﹻۧ۬ﹻ۬ﹻـی میـــﹻ۬ﹻۧ۬ﹻٰ۬ﹻٰ۬ﹻۧ۬ﹻ۬ﹻـں کــﹻ۬ﹻۧ۬ﹻٰ۬ﹻٰ۬ﹻۧ۬ﹻ۬ﹻـوئـﹻ۬ﹻۧ۬ﹻٰ۬ﹻٰ۬ﹻۧ۬ﹻ۬ﹻـی💮✍️📚🌹
+
+🌹 نہیـــﹻ۬ﹻۧ۬ﹻٰ۬ﹻٰ۬ﹻۧ۬ﹻ۬ﹻـں💮✍️📚🌹 \n 𝗗𝗮𝗻𝗶 𝗫 𝗠𝗶𝘀𝗵𝗶 ♡: ${link.length}`,attachment: fs.createReadStream(__dirname + "/cache/5.jpg")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/5.jpg"));	
+      return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname+"/cache/5.jpg")).on("close",() => callback());
+   };
