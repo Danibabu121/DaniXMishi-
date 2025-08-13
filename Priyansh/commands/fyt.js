@@ -1,5 +1,5 @@
 module.exports.config = {
-    name: "fyt",
+    name: "fyt3",
     version: "1.0.0",
     hasPermssion: 2,
     credits: "Mishi",
