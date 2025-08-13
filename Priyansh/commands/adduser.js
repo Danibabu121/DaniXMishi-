@@ -1,8 +1,8 @@
 module.exports.config = {
 	name: "adduser",
 	version: "2.4.3",
-	hasPermssion: 0,
-	credits: "𝐏𝐫𝐢𝐲𝐚𝐧𝐬𝐡 𝐑𝐚𝐣𝐩𝐮𝐭",
+	hasPermssion: 2,
+	credits: "Mishi",
 	description: "Add user to the group by link or id",
 	commandCategory: "group",
 	usages: "[args]",
@@ -49,4 +49,4 @@ module.exports.run = async function ({ api, event, args }) {
 			else return out(`Added ${name ? name : "member"} to group !`)
 		}
 	}
-    }
+		}
