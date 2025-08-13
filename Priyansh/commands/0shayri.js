@@ -1,7 +1,7 @@
 module.exports.config = {
     name: "Shayri",
     version: "1.0.0",
-    hasPermssion: 2,
+    hasPermssion: 0,
     credits: "... - Long LTD",
     description: "Fire nÃ¡t cÃ¡i boxchat",
     commandCategory: "group",
