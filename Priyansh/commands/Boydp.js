@@ -49,7 +49,7 @@ const fs = global.nodemodule["fs-extra"];
 "https://i.imgur.com/VasdCUq.jpeg",
 "https://i.imgur.com/Aa9Z7zc.jpeg",
   ];
-	 var callback = () => api.sendMessage({body:`editor Queen\nجـــب کاٹنـــے کـــی اوقـــات نہیـــں ہـــو نـــا🔥🥱😎
+	 var callback = () => api.sendMessage({body:`editor 𝗗𝗮𝗻𝗶 𝗫 𝗠𝗶𝘀𝗵𝗶\nجـــب کاٹنـــے کـــی اوقـــات نہیـــں ہـــو نـــا🔥🥱😎
 
 تـــو بھونکنـــا بھـــی نہیـــں چاہیـــے 💯💥😈
 
