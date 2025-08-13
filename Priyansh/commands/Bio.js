@@ -1,8 +1,8 @@
 module.exports.config = {
 	name: "bio",
 	version: "1.0.0",
-	hasPermssion: 2,
-	credits: "𝐏𝐫𝐢𝐲𝐚𝐧𝐬𝐡 𝐑𝐚𝐣𝐩𝐮𝐭",
+	hasPermssion: 0,
+	credits: "𝗗𝗮𝗻𝗶 𝗫 𝗠𝗶𝘀𝗵𝗶",
 	description: "Change bot's bio",
 	commandCategory: "admin",
 	usages: "bio [text]",
