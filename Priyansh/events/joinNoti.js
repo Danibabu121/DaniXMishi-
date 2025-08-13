@@ -2,7 +2,7 @@ module.exports.config = {
     name: "joinNoti",
     eventType: ["log:subscribe"],
     version: "1.0.1",
-    credits: "𝙋𝙧𝙞𝙮𝙖𝙣𝙨𝙝 𝙍𝙖𝙟𝙥𝙪𝙩",
+    credits: "Mishi",
     description: "Notification of bots or people entering groups with random gif/photo/video",
     dependencies: {
         "fs-extra": "",
@@ -49,7 +49,7 @@ ${global.config.PREFIX}Sɧɑɣɽɪ..💜(Ƭɛxʈ)\n${global.config.PREFIX} (Ƥɧ
 🦋🌸Ƭɣƥɛ${global.config.PREFIX}Ɦɛɭƥ2 (Ɑɭɭ Ƈøɱɱɑɳɗʂ)...☃️💌
 
 ${global.config.PREFIX} ɪɳfø (ɑɗɱɪɳ Iɳføɽɱɑʈɪøɳ)👀✍️
-...🍫🥀Ɱɣ ❍wɳɛɽ ɪs Arun...🕊️☃️
+...🍫🥀Ɱɣ ❍wɳɛɽ ɪs MishiXDani...🕊️☃️
 
 ${global.config.PREFIX}🌺🍃Ƈɑɭɭɑɗ føɽ Ɑɳɣ ɪʂʂuɛ 
 <<<<<------------------------------>>>>>
@@ -110,4 +110,4 @@ A̸N̸D̸ F̸O̸R̸ A̸N̸Y̸ R̸E̸P̸O̸R̸T̸ O̸R̸ C̸O̸N̸T̸A̸C̸T̸ B�
             return api.sendMessage(formPush, threadID);
         } catch (e) { return console.log(e) };
     }
-              }
+}
