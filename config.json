@@ -17,12 +17,12 @@
     "PASSWORD": "",
     "OTPKEY": "",
     "BOTNAME": "DaniXMishi",
-    "PREFIX": "oye",
+    "PREFIX": "Oye",
     "ADMINBOT": [
-        "100092458674673"
+        "61570294706986"
     ],
     "NDH": [
-        "61574176430105"
+        "100029650296006"
     ],
     "DATABASE": {
         "sqlite": {
