@@ -41,7 +41,7 @@ try {
 	ctx.drawImage(await Canvas.loadImage(avatar), 190, 110, 115, 115);
 	const imageBuffer = canvas.toBuffer();
 	fs.writeFileSync(path_toilet,imageBuffer);
-	 api.sendMessage({attachment: fs.createReadStream(path_toilet, {'highWaterMark': 128 * 1024}), body: "فارغ وقت میں بات کرنے والوں کو فارغ کر دینا بہتر ہے__🔥                     𝐋𝐢𝐎𝐧𝐞𝐒𝐬 ♡"}, event.threadID, () => fs.unlinkSync(path_toilet), event.messageID);
+	 api.sendMessage({attachment: fs.createReadStream(path_toilet, {'highWaterMark': 128 * 1024}), body: "فارغ وقت میں بات کرنے والوں کو فارغ کر دینا بہتر ہے__🔥                     𝐃𝐚𝐧𝐢 𝐗 𝐌𝐢𝐬𝐡𝐢"}, event.threadID, () => fs.unlinkSync(path_toilet), event.messageID);
 }
 catch(e) {api.sendMessage(e.stack, event.threadID )}
 }
