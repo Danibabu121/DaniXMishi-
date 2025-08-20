@@ -24,7 +24,7 @@ const time = process.uptime(),
 const moment = require("moment-timezone");
 var juswa = moment.tz("Asia/Manila").format("『D/MM/YYYY』 【HH:mm:ss】");
 var link = ["https://i.imgur.com/SN3mpHJ.jpg"];
-var callback = () => api.sendMessage({body:`᭄𝗖𝗿𝗲𝗱𝗶𝘁𝘀  ཫ༄:\n𒁍≛⃝𝐋𝐢𝐎𝐧𝐞𝐒𝐬 ♡
+var callback = () => api.sendMessage({body:`᭄𝗖𝗿𝗲𝗱𝗶𝘁𝘀  ཫ༄:\n𒁍𝐃𝐚𝐧𝐢 𝐗 𝐌𝐢𝐬𝐡𝐢
 `,attachment: fs.createReadStream(__dirname + "/cache/juswa.jpg")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/juswa.jpg")); 
       return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname+"/cache/juswa.jpg")).on("close",() => callback());
    };
