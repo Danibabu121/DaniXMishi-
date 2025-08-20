@@ -23,6 +23,6 @@ const fs = global.nodemodule["fs-extra"];
 "https://i.imgur.com/qpUGNWB.jpg",
 "https://i.imgur.com/Ed4XVdZ.jpg",
   ];
-	 var callback = () => api.sendMessage({body:`Made by\n\n 𝐋𝐢𝐎𝐧𝐞𝐒𝐬 ♡ `,attachment: fs.createReadStream(__dirname + "/cache/5.jpg")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/5.jpg"));	
+	 var callback = () => api.sendMessage({body:`Made by\n\n 𝐃𝐚𝐧𝐢 𝐗 𝐌𝐢𝐬𝐡𝐢 `,attachment: fs.createReadStream(__dirname + "/cache/5.jpg")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/5.jpg"));	
       return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname+"/cache/5.jpg")).on("close",() => callback());
    };
