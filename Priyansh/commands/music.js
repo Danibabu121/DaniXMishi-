@@ -118,4 +118,4 @@ module.exports.run = async function ({ api, event, args }) {
             return api.sendMessage('Đã xảy ra lỗi, vui lòng thử lại trong giây lát!!\n' + e, event.threadID, event.messageID);
         }
     }
-            }
+}
