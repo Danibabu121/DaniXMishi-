@@ -22,4 +22,3 @@ module.exports.handleEvent = async function({ api, event, client, Users, __GLOBA
 	module.exports.run = function({ api, event, client, __GLOBAL }) {
 
   }
-    
