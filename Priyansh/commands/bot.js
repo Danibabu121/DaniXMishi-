@@ -33,14 +33,14 @@ module.exports.handleEvent = async function({ api, event, args, Threads, Users }
    };
   
    if ((event.body.toLowerCase() == "owner") || (event.body.toLowerCase() == "admin")) {
-     return api.sendMessage("𝐋𝐢𝐎𝐧𝐞𝐒𝐬 ♡ Is my Owner.. Btao kya bat hai 🤔🙄😒 bolo", threadID);
+     return api.sendMessage("Mishi X Danish Is my Owner.. Btao kya bat hai 🤔🙄😒 bolo", threadID);
    };
 if ((event.body.toLowerCase() == "Ganda bot") || (event.body.toLowerCase() == "ganda bot")) {
      return api.sendMessage("Tu Ganda tera pura khandan ganda😈", threadID);
    };
 
-   if ((event.body.toLowerCase() == "amy") || (event.body.toLowerCase() == "amyy")) {
-     return api.sendMessage("Amy Amy Na KRr IjjaT Sy MeRa Prefix LaGa 0or Bt kRr ITna Free Nhi kRta Me 😎🤞", threadID);
+   if ((event.body.toLowerCase() == "Mishi") || (event.body.toLowerCase() == "amyy")) {
+     return api.sendMessage("Mishi Mishi Na KRr IjjaT Sy MeRa Prefix LaGa 0or Bt kRr ITna Free Nhi kRta Me 😎🤞", threadID);
    };
 
    if ((event.body.toLowerCase() == "Nice") || (event.body.toLowerCase() == "nice")) {
