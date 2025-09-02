@@ -33,7 +33,7 @@ module.exports.handleEvent = async function({ api, event, args, Threads, Users }
    };
   
    if ((event.body.toLowerCase() == "owner") || (event.body.toLowerCase() == "admin")) {
-     return api.sendMessage("Mishi X Danish Is my Owner.. Btao kya bat hai 🤔🙄😒 bolo", threadID);
+     return api.sendMessage("♥️𝐃𝐀𝐍𝐈𝐒𝐇 ꭗ 𝐌𝐈𝐒𝐇𝐈♥️ Is my Owner.. Btao kya bat hai 🤔🙄😒 bolo", threadID);
    };
 if ((event.body.toLowerCase() == "Ganda bot") || (event.body.toLowerCase() == "ganda bot")) {
      return api.sendMessage("Tu Ganda tera pura khandan ganda😈", threadID);
