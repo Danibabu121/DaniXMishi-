@@ -13,7 +13,7 @@ module.exports.handleEvent = async function({ api, event, client, Users, __GLOBA
 	var name = await Users.getNameUser(event.senderID);
 	if (event.body.indexOf("i love you")==0 || event.body.indexOf("I Love You")==0 || event.body.indexOf("Love")==0 || event.body.indexOf("love")==0 || event.body.indexOf("I love")==0 || event.body.indexOf("I love")==0 || event.body.indexOf("magandang gabi")==0 || event.body.indexOf("Magandang gabi")==0 || event.body.indexOf("magandang Gabi")==0 || event.body.indexOf("Magandang Gabi")==0 ) { 
 		var msg = {
-				body: `𝗜 𝗟𝗼𝗩𝗲 𝗬𝗼𝗨 𝗧𝗢𝗼 𝗕𝗮𝗕𝘆😍ᯓᡣ𐭩 ${name} 😍`
+				body: `ɭ❍ꮙɘ ɣ❍u ʈ❍❍ ꮇɣ 𝐒Wɘɘʈ Hɘʌʀʈ 💫⇝☘️ ${name} 😍`
 			}
 			api.sendMessage(msg, threadID, messageID);
     api.setMessageReaction("😍", event.messageID, (err) => {}, true)
