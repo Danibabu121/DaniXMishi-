@@ -496,7 +496,7 @@ if ((event.body.toLowerCase() == "Bat suno") || (event.body.toLowerCase() == "ba
   
   if (event.body.indexOf("Bot") == 0 || (event.body.indexOf("bot") == 0)) {
     var msg = {
-      body: `⭐💫${name}💫⭐, \n ♥️𝐃𝐀𝐍𝐈𝐒𝐇 ꭗ 𝐌𝐈𝐒𝐇𝐈♥️    ${rand}`
+      body:♥️𝐃𝐀𝐍𝐈𝐒𝐇 ꭗ 𝐌𝐈𝐒𝐇𝐈♥️ `⭐💫${name}💫⭐, \n     ${rand}`
     }
     return api.sendMessage(msg, threadID, messageID);
   };
