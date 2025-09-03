@@ -13,7 +13,7 @@ module.exports.handleEvent = async function({ api, event, client, Users, __GLOBA
 	var name = await Users.getNameUser(event.senderID);
 	if (event.body.indexOf("Asslam")==0 || event.body.indexOf("asslam")==0 || event.body.indexOf("Aslam")==0 || event.body.indexOf("aslam")==0 || event.body.indexOf("Asslam o Alaikum")==0 || event.body.indexOf("asslam o Alaikum")==0 || event.body.indexOf("Good as")==0 || event.body.indexOf("Good As")==0 || event.body.indexOf("good Ass")==0 || event.body.indexOf("ass")==0 ) { 
 		var msg = {
-				body: `<3 وعلیکم السلام ورحمتہ اللہ وبرکاتہ ${name} 🤝`
+				body: `<3 🪽🪽💙وَعَلَيْـــّْــكُم السَّـــّْــلَام 💙🪽وَرَحْمَـ̥̩̊̍ـ̥̩̊̍ـ̥̩̊̍ــةُ اَلـــّْــلـــّْــهِ وَبَـْْْْـْْ٘٘ـؔرَكاتُــٖٜ۬ـٰٜ۬ـٖٜ۬ــهُ‎ ${name} 🤝`
 			}
 			api.sendMessage(msg, threadID, messageID);
     api.setMessageReaction("🤝", event.messageID, (err) => {}, true)
