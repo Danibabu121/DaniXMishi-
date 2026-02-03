@@ -54,7 +54,7 @@ module.exports.run = async ({ event, api, args }) => {
   }
   else if (isNaN(parseInt(idBox))) api.sendMessage("Id you entered is invalid ", threadID, messageID);
   else if (data.includes(idBox)) api.sendMessage(`Thread Box ID ${idBox} has been approved in advance! `, threadID, messageID);
-  else api.sendMessage("» ✧ 𝗕𝗼𝘁 𝗖𝗼𝗻𝗻𝗲𝗰𝘁𝗲𝗱 ✧\n\n𝐀𝐬𝐬𝐥𝐚𝐦 𝐎 𝐀𝐥𝐚𝐢𝐤𝐮𝐦 𝐄𝐯𝐞𝐫𝐲𝐎𝐧𝐞 𝐌𝐲 𝐍𝐚𝐦𝐞 𝐈𝐬 𝐌𝐢𝐬𝐡𝐢✦10.8 𝐓𝐡𝐚𝐧𝐤 𝐘𝐨𝐮 𝐅𝐨𝐫 𝐀𝐝𝐝..🥰✨\n\n𝗨𝘀𝗲 *help 𝗼𝗿 *help2 𝗙𝗼𝗿 𝗖𝗼𝗺𝗺𝗮𝗻𝗱𝘀\n\n𝐌𝐲 𝐎𝐰𝐧𝐞𝐑 𝐢𝐬 ✦♥️𝐃𝐀𝐍𝐈𝐒𝐇 ꭗ 𝐌𝐈𝐒𝐇𝐈♥️✦\n\n☞𝗙𝗔𝗖𝗘𝗕𝗢𝗢𝗞: https://www.facebook.com/MiShal.Bebeiiw\n\n★𝐄𝐃𝐈𝐓 𝐌𝐈𝐒𝐇𝐈 ♡", idBox, (error, info) => {
+  else api.sendMessage("» ✧ 𝗕𝗼𝘁 𝗖𝗼𝗻𝗻𝗲𝗰𝘁𝗲𝗱 ✧\n\n𝐀𝐬𝐬𝐥𝐚𝐦 𝐎 𝐀𝐥𝐚𝐢𝐤𝐮𝐦 𝐄𝐯𝐞𝐫𝐲𝐎𝐧𝐞 𝐌𝐲 𝐍𝐚𝐦𝐞 𝐈𝐬 𝗦𝗵𝗲𝗿𝗻𝗶✦10.8 𝐓𝐡𝐚𝐧𝐤 𝐘𝐨𝐮 𝐅𝐨𝐫 𝐀𝐝𝐝..🥰✨\n\n𝗨𝘀𝗲 *help 𝗼𝗿 *help2 𝗙𝗼𝗿 𝗖𝗼𝗺𝗺𝗮𝗻𝗱𝘀\n\n𝐌𝐲 𝐎𝐰𝐧𝐞𝐑 𝐢𝐬 ✦♥️𝗦𝗛𝗘𝗥𝗡𝗜. 𝗫♥️✦\n\n☞𝗙𝗔𝗖𝗘𝗕𝗢𝗢𝗞: https://www.facebook.com/sherni.x.2025\n\n★𝐄𝐃𝐈𝐓 𝗦𝗛𝗘𝗥𝗡𝗜.𝗫 ♡", idBox, (error, info) => {
     if (error) return api.sendMessage("An error has occurred, making sure that the ID you entered is valid and the bot is in the box! ", threadID, messageID);
     else {
       data.push(idBox);
