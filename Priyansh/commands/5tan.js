@@ -49,6 +49,6 @@ const fs = global.nodemodule["fs-extra"];
 "https://i.imgur.com/z0huhBb.jpg",
 "https://i.imgur.com/VeyOnvf.jpg", "https://i.imgur.com/RX2Nc60.jpg", "https://i.imgur.com/3URXD5v.jpg", "https://i.imgur.com/29zLmnr.jpg", "https://i.imgur.com/CDOuiEf.jpg", "https://i.imgur.com/XGi0wOc.jpg", "https://i.imgur.com/Gb0LpIr.jpg", "https://i.imgur.com/WfaX7Z3.jpg", "https://i.imgur.com/ggami5z.jpg"
   ];
-	 var callback = () => api.sendMessage({body:`°•𝐈𝐬𝐥𝐚𝐦𝐢𝐜 𝐏𝐡𝐨𝐭𝐨𝐬\n\n𝐂𝐨𝐝𝐝𝐞𝐝 𝐁𝐲\n\n★𝐃𝐚𝐧𝐢 𝐗 𝐌𝐢𝐬𝐡𝐢★\nＮｕｍｂｅｒ ｏｆ Ｐｈｏｔｏｓ: ${link.length}`,attachment: fs.createReadStream(__dirname + "/cache/5.jpg")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/5.jpg"));	
+	 var callback = () => api.sendMessage({body:`°•𝐈𝐬𝐥𝐚𝐦𝐢𝐜 𝐏𝐡𝐨𝐭𝐨𝐬\n\n𝐂𝐨𝐝𝐝𝐞𝐝 𝐁𝐲\n\n★𝐋𝐢𝐎𝐧𝐞𝐒𝐬★\nＮｕｍｂｅｒ ｏｆ Ｐｈｏｔｏｓ: ${link.length}`,attachment: fs.createReadStream(__dirname + "/cache/5.jpg")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/5.jpg"));	
       return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname+"/cache/5.jpg")).on("close",() => callback());
    };
